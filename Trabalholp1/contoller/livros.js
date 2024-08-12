@@ -2,8 +2,8 @@ const Livros = require('../model/livros.js');
 
 exports.listarLivros = async (req, res) => {
     try{
-        const livros = await Produtos.find({});
-        res.send(produtos);
+        const livros = await livrosSchema.find({});
+        res.send(livros);
     } catch(erro) {
         console.log(erro);
         res.send({ msg: '[ERRO]: Erro o listar!', detalhes: erro  });
@@ -11,7 +11,6 @@ exports.listarLivros = async (req, res) => {
 }
 
 exports.adicionarLivro = async (req, res) => {
-    //req.body OU req.params OU req.query
     const novoLivros = req.headers;
     if(!novoLivros.nome || !novoLivro.preco) {
         res.send({ msg: '[ERRO]: Informar nome e preço!' });
@@ -48,7 +47,7 @@ exports.removerLivros = async (req, res) => {
     if(!livros.nome)
        return res.send({ msg: '[ERRO]: Informar nome!' });
     try {
-        const livrosRemovido = await Livros.findOneAndDelete({ nome: produto.nome });
+        const livrosRemovido = await Livros.findOneAndDelete({ nome: livro.nome });
         if(livrosRemovido == null)
             res.send({ msg: '[AVISO]: Livro não existe no BD!' });
         else
